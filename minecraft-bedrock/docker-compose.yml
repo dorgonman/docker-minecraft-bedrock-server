@@ -1,0 +1,25 @@
+services:
+  bds:
+    image: itzg/minecraft-bedrock-server
+    container_name: minecraft-bedrock-server-instance
+    environment:
+      EULA: "TRUE"
+      VERSION: LATEST
+      # GAMEMODE: "survival" # Options: survival, creative, adventure
+      # DIFFICULTY: "normal" # Options: peaceful, easy, normal, hard
+      # #DEFAULT_PLAYER_PERMISSION_LEVEL: "member" # Options: visitor, member, operator
+      LEVEL_NAME: "horizonia-world"
+      #LEVEL_SEED: "33480944"
+      SERVER_NAME: "horizonia"
+      SERVER_PORT: "19132"
+      #LEVEL_TYPE: "DEFAULT" # Options: FLAT, LEGACY, DEFAULT
+      # ALLOW_CHEATS: "true" # Options: true, false
+      # MAX_PLAYERS: "10"
+      #PLAYER_IDLE_TIMEOUT: "30"
+      #TEXTUREPACK_REQUIRED: "false" # Options: true, false
+    ports:
+      - "19132:19132/udp"
+    volumes:
+      - /var/lib/docker/volumes/app/minecraft-bedrock-server/data:/data
+    stdin_open: true
+    tty: true
